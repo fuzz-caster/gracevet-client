@@ -27,7 +27,6 @@ import TambahKunjungan from '@/components/app/kunjungan/Main'
 import { updateFormRoutes } from '@/components/app/commons/add-form/update-forms'
 import kunjunganRoutes from '@/components/app/kunjungan/routes'
 import RmPerawatanList from '@/components/app/perawatan/List'
-import RmResepList from '@/components/app/resep/List'
 
 Vue.use(Router)
 
@@ -58,11 +57,6 @@ export default new Router({
           path: 'perawatan/rm/:id',
           props: true,
           component: RmPerawatanList
-        },
-        {
-          path: 'resep/rm/:id',
-          props: true,
-          component: RmResepList
         },
         {
           path: 'rekammedik/list',
