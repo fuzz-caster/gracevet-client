@@ -60,41 +60,23 @@
     </listing>
     <v-dialog
       v-model="dialogIsVisible"
-      max-width="500"
+      max-width="800"
     >
-      <v-card>
-        <v-layout justify-center align-center row wrap>
-          <v-flex sm8 xs12 justify-center flex class="mx-auto">
-            <v-layout justify-center flex>
-              <v-btn block color="primary" dark>
-                Kunjungan Member
-              </v-btn>
-            </v-layout>
-            <v-layout justify-center flex>
-              <v-btn block color="info" dark>
-                Pasien Lama, Pemilik Baru
-              </v-btn>
-            </v-layout>
-            <v-layout justify-center flex>
-              <v-btn block color="warning" dark>
-                Pasien Baru, Pemilik Baru
-              </v-btn>
-            </v-layout>
-          </v-flex>
-        </v-layout>
-      </v-card>
+      <add-form-wrapper/>
     </v-dialog>
   </div>
 </template>
 
 <script>
 import Listing from '@/components/app/commons/Listing'
+import AddFormWrapper from './AddFormWrapper'
 import Service from '@/services'
 import moment from 'moment'
 
 export default {
   components: {
-    Listing
+    Listing,
+    AddFormWrapper
   },
   name: 'RekamMedikList',
   data () {

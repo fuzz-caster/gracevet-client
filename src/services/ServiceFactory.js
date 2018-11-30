@@ -44,7 +44,10 @@ export function ServiceFactory (basePath, tbname, mapper) {
     },
     getById (id) {
       let url = `${basePath}?command=load_by_id&id=${id}`
-      return Axios.get(url).then(resp => resp.data).then(data => _mapper(data))
+      return Axios.get(url).then(resp => resp.data).then(data => {
+        console.log(data)
+        return _mapper(data)
+      })
     }
   }
 }

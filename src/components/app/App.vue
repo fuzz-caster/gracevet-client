@@ -1,24 +1,6 @@
 <template>
   <div style="height: 100%;">
     <sidebar :mini-variant="miniVariant" :clipped="clipped" :drawer="drawer"/>
-    <!-- <v-toolbar
-      app
-      color="white"
-    >
-      <v-toolbar-side-icon @click.stop="miniVariant = !miniVariant"></v-toolbar-side-icon>
-      <v-text-field
-        class="mx-3 white--text"
-        flat
-        label="Search"
-        prepend-inner-icon="search"
-      ></v-text-field>
-      <v-btn
-        icon
-        flat
-        @click.stop="rightDrawer = !rightDrawer">
-        <font-awesome-icon icon="user" class="pink--text"></font-awesome-icon>
-      </v-btn>
-    </v-toolbar> -->
     <router-view/>
     <v-navigation-drawer
       temporary

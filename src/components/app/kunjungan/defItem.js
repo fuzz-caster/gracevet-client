@@ -2,6 +2,7 @@
 const rekamMedik = {
   norek: '',
   tipe_norek: '',
+  penyakit_id: null,
   tanggal: '',
   waktu: '',
   berat: 0,

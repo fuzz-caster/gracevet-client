@@ -13,6 +13,13 @@
         @save="save"/>
       <v-form :value="formValid" class="ma-4">
 
+        <v-select
+          :items="options.penyakit"
+          v-model="rekamMedik.penyakit_id"
+          :rules="[v => !!v || 'Silahkan pilih penyakit']"
+        >
+        </v-select>
+
         <v-text-field type="date" v-model="rekamMedik.tanggal" label="Hari dan Tanggal kunjungan ini"
           :rules="[v => !!v || 'Silahkan input waktu kunjungan']"/>
         <v-divider/>
@@ -171,7 +178,8 @@ export default {
       state: 'idle',
       rekamMedik: fDefItem().rekamMedik,
       options: {
-        tipeNorek: ['GA', 'GB', 'GC', 'GD']
+        tipeNorek: ['GA', 'GB', 'GC', 'GD'],
+        penyakit: []
       },
       successActions: [
         {
@@ -211,7 +219,11 @@ export default {
         })
     },
     reload () {
-      return Services.RekamMedik.getById(this.id)
+      return Services.Options.get('penyakit')
+        .then(items => {
+          this.options.penyakit = items
+        })
+        .then(() => Services.RekamMedik.getById(this.id))
         .then(data => {
           let dateTime = moment(data.tanggal, 'MMMM D YYYY, h:mm a')
           let tanggal = dateTime.format('YYYY-MM-DD')

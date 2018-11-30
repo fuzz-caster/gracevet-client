@@ -27,6 +27,10 @@ import TambahKunjungan from '@/components/app/kunjungan/Main'
 import { updateFormRoutes } from '@/components/app/commons/add-form/update-forms'
 import kunjunganRoutes from '@/components/app/kunjungan/routes'
 import RmPerawatanList from '@/components/app/perawatan/List'
+import Tipe1 from '@/components/app/rekam-medik/tambah/Tipe1'
+import Tipe2 from '@/components/app/rekam-medik/tambah/Tipe2'
+import Tipe3 from '@/components/app/rekam-medik/tambah/Tipe3'
+import Tipe4 from '@/components/app/rekam-medik/tambah/Tipe4'
 
 Vue.use(Router)
 
@@ -78,6 +82,22 @@ export default new Router({
           path: 'rekammedik/update/hasillab/:id',
           props: true,
           component: EditHasilLab
+        },
+        {
+          path: 'rekammedik/tambah/PemilikBaruPasienBaru',
+          component: Tipe1
+        },
+        {
+          path: 'rekammedik/tambah/PemilikBaruPasienLama',
+          component: Tipe2
+        },
+        {
+          path: 'rekammedik/tambah/PemilikLamaPasienBaru',
+          component: Tipe3
+        },
+        {
+          path: 'rekammedik/tambah/PemilikLamaPasienLama',
+          component: Tipe4
         },
         {
           path: 'rekammedik/update/penkhusus/:id',

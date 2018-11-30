@@ -87,6 +87,26 @@ const Custom = {
       .then(resp => resp.data)
   },
 
+  tambahTipe1 ({ pemilik, pasien }) {
+    let url = `/kunjungan/tambah.php?command=PasienBaruPemilikBaru`
+    return Axios.post(url, { pemilik, pasien }).then(resp => resp.data)
+  },
+
+  tambahTipe2 ({ pemilik, pasien_id }) {
+    let url = `/kunjungan/tambah.php?command=PasienLamaPemilikBaru`
+    return Axios.post(url, { pemilik, pasien_id }).then(resp => resp.data)
+  },
+
+  tambahTipe3 ({ pemilik_id, pasien }) {
+    let url = `/kunjungan/tambah.php?command=PasienBaruPemilikLama`
+    return Axios.post(url, { pemilik_id, pasien }).then(resp => resp.data)
+  },
+
+  tambahTipe4 ({ pemilik_id, pasien_id }) {
+    let url = `/kunjungan/tambah.php?command=PasienLamaPemilikLama`
+    return Axios.post(url, { pemilik_id, pasien_id }).then(resp => resp.data)
+  },
+
   removePerawatan (id) {
     return Axios.get(`/perawatan/index.php?command=delete&id=${id}`)
   },

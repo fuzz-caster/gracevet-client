@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div style="position: sticky; top: 0; z-index: 1000;">
     <v-toolbar flat color="teal darken-2" dark>
       <v-toolbar-title>
         Edit Data Rekam Medik
