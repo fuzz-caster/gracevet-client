@@ -7,12 +7,6 @@ export default {
       iconColor: 'pink'
     },
     {
-      name: 'Tambah Kunjungan',
-      icon: 'truck',
-      link: '/app/kunjungan',
-      iconColor: 'blue'
-    },
-    {
       name: 'Kunjungan',
       icon: 'folder-open',
       link: '/app/rekammedik/list',

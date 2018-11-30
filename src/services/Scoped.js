@@ -16,6 +16,17 @@ const RekamMedik = {
   }
 }
 
+const PenangananKhusus = {
+  getPenangananKhusus (id) {
+    return Axios.get(`rekam-medik/api_dao_rekam_medik.php?command=pen_khusus&id=${id}`)
+      .then(resp => resp.data)
+  },
+  setPenangananKhusus (id, data) {
+    return Axios.post(`rekam-medik/api_dao_rekam_medik.php?command=pen_khusus&id=${id}`, data)
+  }
+}
+
 export default {
-  RekamMedik
+  RekamMedik,
+  PenangananKhusus
 }

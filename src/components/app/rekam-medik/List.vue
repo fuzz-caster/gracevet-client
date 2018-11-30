@@ -10,7 +10,19 @@
     >
       <template slot="row-content" slot-scope="rprops">
         <td>
-          <div class="font-weight-bold caption">#{{ rprops.rprops.item.tipe_norek }} - {{ rprops.rprops.item.norek }}</div>
+          <v-chip
+            small
+            dark
+            v-bind:class="{ 'blue': rprops.rprops.item.tipe_norek == 'GA',
+                            'red': rprops.rprops.item.tipe_norek == 'GB',
+                            'green': rprops.rprops.item.tipe_norek == 'GC',
+                            'purple': rprops.rprops.item.tipe_norek == 'GD'
+                          }"
+          >
+            <span class="body-2 white--text">{{ rprops.rprops.item.tipe_norek }}</span>
+          </v-chip>
+          <span>-</span>
+          <v-chip small><span>{{ rprops.rprops.item.norek }}</span></v-chip>
         </td>
         <td>
           <div class="body-2 font-weight-bold">{{ rprops.rprops.item.penyakit_nama }}</div>
@@ -29,23 +41,16 @@
       <template slot="action-content" slot-scope="rprops">
         <td class="text-xs-right">
           <v-btn icon small flat
-            @click="openPerawatan(rprops.rprops.item.id)">
-            <font-awesome-icon
-              class="pink--text text-lighten-1"
-              icon="hospital"
-            ></font-awesome-icon>
-          </v-btn>
-          <v-btn icon small flat
             @click="viewDetail(rprops.rprops.item.id)">
             <font-awesome-icon
               class="green--text text-lighten-1"
               icon="eye"
             ></font-awesome-icon>
           </v-btn>
-          <v-btn icon small flat
+          <v-btn small flat icon
             @click="$router.push(`/app/rekammedik/update/rekammedik/${rprops.rprops.item.id}`)">
             <font-awesome-icon
-              class="blue--text text-lighten-1"
+              class="blue--text"
               icon="pencil-alt"
             ></font-awesome-icon>
           </v-btn>
@@ -58,12 +63,6 @@
         </td>
       </template>
     </listing>
-    <v-dialog
-      v-model="dialogIsVisible"
-      max-width="800"
-    >
-      <add-form-wrapper/>
-    </v-dialog>
   </div>
 </template>
 

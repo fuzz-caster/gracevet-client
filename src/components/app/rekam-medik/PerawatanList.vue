@@ -4,75 +4,6 @@
       <add-form @save="addDialog = false; onSaveNew($event)"/>
     </v-dialog>
 
-    <v-container fluid class="pa-0">
-      <v-layout row class="info-row">
-
-        <v-flex md4>
-          <v-card flat class="mx-0" dark color="blue darken-2">
-            <v-card-text>
-              <v-layout row align-center>
-                <div class="title text-md-center my-2">
-                  {{ pemilik.nama }}
-                </div>
-                <v-divider vertical class="mx-2"/>
-                <v-layout column justify-center class="py-2">
-                  <v-chip small>
-                    {{ pemilik.alamat }}
-                  </v-chip>
-                  <v-chip small>
-                    {{ pemilik.no_telp }}
-                  </v-chip>
-                </v-layout>
-              </v-layout>
-            </v-card-text>
-          </v-card>
-        </v-flex>
-
-        <v-flex md4>
-          <v-card flat class="mx-0" dark color="blue darken-3">
-            <v-card-text>
-              <v-layout row align-center>
-                <div class="title text-md-center my-2">
-                  {{ pasien.nama }}
-                </div>
-                <v-divider vertical class="mx-2"/>
-                <v-layout column justify-center class="py-2">
-                  <v-chip small>
-                    {{ pasien.ras_nama }}
-                  </v-chip>
-                  <v-chip small>
-                    {{ pasien.jh_nama }}
-                  </v-chip>
-                </v-layout>
-              </v-layout>
-            </v-card-text>
-          </v-card>
-        </v-flex>
-
-        <v-flex md4>
-          <v-card flat class="mx-0" dark color="blue darken-2">
-            <v-card-text>
-              <v-layout row align-center>
-                <div class="title text-md-center my-2 white--text">
-                  {{ rekam_medik.norek }}
-                </div>
-                <v-divider vertical class="mx-2"/>
-                <v-layout column justify-center class="py-2">
-                  <v-chip small>
-                    {{ rekam_medik.tipe_norek }}
-                  </v-chip>
-                  <v-chip small>
-                    {{ formatDate(rekam_medik.tanggal) }}
-                  </v-chip>
-                </v-layout>
-              </v-layout>
-            </v-card-text>
-          </v-card>
-        </v-flex>
-
-      </v-layout>
-    </v-container>
-
     <loading-view v-if="state == 'loading'"/>
     <error-view v-if="state == 'error'" @reload="reload"
       :message="errorMessage"/>
@@ -81,6 +12,10 @@
       :actions="successActions"/>
 
     <div v-if="state == 'idle'">
+      <base-edit-form
+        :valid="false"
+        :id="id"/>
+
       <v-toolbar flat dark color="cyan darken-1">
         <v-toolbar-title class="body-1">
           Data Rawat Inap
@@ -146,7 +81,8 @@
 <script>
 import moment from 'moment'
 import Services from '@/services'
-import AddForm from './AddForm'
+import AddForm from './PerawatanAddForm'
+import BaseEditForm from './BaseEditForm'
 import ErrorView from '@/components/app/commons/ErrorView'
 import SuccessView from '@/components/app/commons/SuccessView'
 import LoadingView from '@/components/app/commons/LoadingView'
@@ -154,6 +90,7 @@ import LoadingView from '@/components/app/commons/LoadingView'
 export default {
   props: ['id'],
   components: {
+    BaseEditForm,
     LoadingView,
     ErrorView,
     SuccessView,

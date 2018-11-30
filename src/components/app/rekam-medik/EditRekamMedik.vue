@@ -219,6 +219,7 @@ export default {
         })
     },
     reload () {
+      this.state = 'loading'
       return Services.Options.get('penyakit')
         .then(items => {
           this.options.penyakit = items
@@ -232,9 +233,11 @@ export default {
           this.rekamMedik = data
           this.rekamMedik.tanggal = tanggal
           this.rekamMedik.waktu = waktu
+          this.state = 'idle'
         })
         .catch(err => {
           console.log(err)
+          this.state = 'error'
         })
     }
   },

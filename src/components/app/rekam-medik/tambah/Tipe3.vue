@@ -50,6 +50,7 @@ export default {
       this.save()
     },
     async save () {
+      // eslint-disable-next-line
       let pemilik_id = this.pemilikId
       let pasien = this.pasien
       try {

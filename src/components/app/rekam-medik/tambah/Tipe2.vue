@@ -51,6 +51,7 @@ export default {
     },
     async save () {
       let pemilik = this.pemilik
+      // eslint-disable-next-line
       let pasien_id = this.pasienId
       try {
         let result = await Services.Custom.tambahTipe2({ pemilik, pasien_id })

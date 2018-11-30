@@ -8,8 +8,19 @@
   >
     <template slot="row-content" slot-scope="rprops">
       <td>
-        <div class="font-weight-bold body-1">{{ rprops.rprops.item.tipe_norek }}</div>
-        <div class="caption">{{ rprops.rprops.item.norek }}</div>
+        <v-chip
+          small
+          dark
+          v-bind:class="{ 'blue': rprops.rprops.item.tipe_norek == 'GA',
+                          'red': rprops.rprops.item.tipe_norek == 'GB',
+                          'green': rprops.rprops.item.tipe_norek == 'GC',
+                          'purple': rprops.rprops.item.tipe_norek == 'GD'
+                        }"
+        >
+          <span class="body-2 white--text">{{ rprops.rprops.item.tipe_norek }}</span>
+        </v-chip>
+        <span>-</span>
+        <v-chip small><span>{{ rprops.rprops.item.norek }}</span></v-chip>
       </td>
       <td>
         <div class="font-weight-bold body-1">{{ rprops.rprops.item.nama }}</div>
@@ -45,7 +56,7 @@ export default {
         {
           text: 'Rekam Medik',
           value: '',
-          width: '140'
+          width: '200'
         },
         {
           text: 'Nama',

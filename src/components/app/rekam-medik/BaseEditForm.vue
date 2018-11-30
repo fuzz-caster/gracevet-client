@@ -1,6 +1,6 @@
 <template>
-  <div style="position: sticky; top: 0; z-index: 1000;">
-    <v-toolbar flat color="teal darken-2" dark>
+  <div>
+    <v-toolbar color="indigo darken-1" dark>
       <v-toolbar-title>
         Edit Data Rekam Medik
       </v-toolbar-title>
@@ -16,7 +16,7 @@
         <font-awesome-icon icon="download" size="lg"></font-awesome-icon>
       </v-btn>
     </v-toolbar>
-    <v-toolbar dense color="cyan darken-1" flat dark class="py-4">
+    <v-toolbar dense color="cyan darken-1" dark class="py-4 elevation-6">
       <v-toolbar-items>
         <v-btn v-for="it in navs" :key="it.to"
           flat
@@ -45,6 +45,10 @@ export default {
         {
           text: 'Penanganan Khusus',
           to: 'penkhusus'
+        },
+        {
+          text: 'Rawat Inap',
+          to: 'perawatan'
         }
       ]
     }

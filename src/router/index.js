@@ -26,7 +26,7 @@ import JenisHewanAddEditor from '@/components/app/commons/add-form/JenisHewanAdd
 import TambahKunjungan from '@/components/app/kunjungan/Main'
 import { updateFormRoutes } from '@/components/app/commons/add-form/update-forms'
 import kunjunganRoutes from '@/components/app/kunjungan/routes'
-import RmPerawatanList from '@/components/app/perawatan/List'
+import RmPerawatanList from '@/components/app/rekam-medik/PerawatanList'
 import Tipe1 from '@/components/app/rekam-medik/tambah/Tipe1'
 import Tipe2 from '@/components/app/rekam-medik/tambah/Tipe2'
 import Tipe3 from '@/components/app/rekam-medik/tambah/Tipe3'
@@ -58,11 +58,6 @@ export default new Router({
           component: Dashboard
         },
         {
-          path: 'perawatan/rm/:id',
-          props: true,
-          component: RmPerawatanList
-        },
-        {
           path: 'rekammedik/list',
           name: 'RekamMedikList',
           component: RekamMedikList
@@ -82,6 +77,11 @@ export default new Router({
           path: 'rekammedik/update/hasillab/:id',
           props: true,
           component: EditHasilLab
+        },
+        {
+          path: 'rekammedik/update/perawatan/:id',
+          props: true,
+          component: RmPerawatanList
         },
         {
           path: 'rekammedik/tambah/PemilikBaruPasienBaru',

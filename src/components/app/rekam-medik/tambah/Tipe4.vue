@@ -50,7 +50,9 @@ export default {
       this.save()
     },
     async save () {
+      // eslint-disable-next-line
       let pemilik_id = this.pemilikId
+      // eslint-disable-next-line
       let pasien_id = this.pasienId
       try {
         let result = await Services.Custom.tambahTipe4({ pemilik_id, pasien_id })

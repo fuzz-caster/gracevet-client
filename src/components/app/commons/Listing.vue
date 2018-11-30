@@ -31,8 +31,8 @@
         class="mb-0"
         app
         fixed
+        color="indigo"
         dark
-        color="teal darken-2"
       >
         <v-toolbar-side-icon>
           <font-awesome-icon
