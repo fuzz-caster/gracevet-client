@@ -10,32 +10,25 @@
     >
       <template slot="row-content" slot-scope="rprops">
         <td>
-          <v-chip
-            small
-            dark
-            v-bind:class="{ 'blue': rprops.rprops.item.tipe_norek == 'GA',
-                            'red': rprops.rprops.item.tipe_norek == 'GB',
-                            'green': rprops.rprops.item.tipe_norek == 'GC',
-                            'purple': rprops.rprops.item.tipe_norek == 'GD'
-                          }"
-          >
-            <span class="body-2 white--text">{{ rprops.rprops.item.tipe_norek }}</span>
-          </v-chip>
-          <span>-</span>
-          <v-chip small><span>{{ rprops.rprops.item.norek }}</span></v-chip>
-        </td>
-        <td>
-          <div class="body-2 font-weight-bold">{{ rprops.rprops.item.penyakit_nama }}</div>
-        </td>
-        <td>
-          <div class="caption">{{ rprops.rprops.item.tanggal }}</div>
+          <div class="body-1">{{ rprops.rprops.item.tipe_norek }} -- {{ rprops.rprops.item.norek }}</div>
         </td>
         <td>
           <div class="body-1">{{ rprops.rprops.item.pasien_nama }}</div>
-          <div class="caption">{{ rprops.rprops.item.ras_nama }} / {{ rprops.rprops.item.jh_nama }}</div>
         </td>
         <td>
-          <div class="body-1">{{ rprops.rprops.item.pemilik_nama }}</div>
+          <div class="body-1">{{ rprops.rprops.item.tanggal }}</div>
+        </td>
+        <td>
+          <div class="body-1">{{ rprops.rprops.item.ras_nama }}</div>
+        </td>
+        <td>
+          <div class="body-1">{{ rprops.rprops.item.pasien_format_jk }}</div>
+        </td>
+        <td>
+          <div class="body-1">{{ formatUmur(rprops.rprops.item.pasien_lahir) }}</div>
+        </td>
+        <td class="text-md-left">
+          <div class="body-1">{{ rprops.rprops.item.berat }}</div>
         </td>
       </template>
       <template slot="action-content" slot-scope="rprops">
@@ -54,7 +47,8 @@
               icon="pencil-alt"
             ></font-awesome-icon>
           </v-btn>
-          <v-btn icon small flat>
+          <v-btn icon small flat
+            @click="openDelConfirm(rprops.rprops.item.id)">
             <font-awesome-icon
               class="red--text text-lighten-1"
               icon="trash"
@@ -63,6 +57,23 @@
         </td>
       </template>
     </listing>
+
+    <v-dialog
+      v-model="delConfirmIsVisible"
+      max-width=600
+    >
+      <v-card>
+        <v-container fluid>
+          <v-layout row justify-center align-center>
+            <div class="title">Apakah anda yakin ingin menghapus data?</div>
+          </v-layout>
+          <v-layout row justify-center align-center>
+            <v-btn @click="delItem(delId)" color="red" dark>Ya</v-btn>
+            <v-btn @click="delConfirmIsVisible = false" color="blue" dark>Tidak</v-btn>
+          </v-layout>
+        </v-container>
+      </v-card>
+    </v-dialog>
   </div>
 </template>
 
@@ -85,29 +96,43 @@ export default {
       routePath: 'rekammedik',
       headers: [
         {
-          text: '',
+          text: 'NO.RM',
           value: 'norek',
           sortable: false
         },
         {
-          text: 'Penyakit',
+          text: 'Nama Hewan',
           value: '',
           sortable: false
         },
         {
-          text: '',
+          text: 'Tanggal',
           value: 'waktu',
           sortable: false
         },
         {
-          text: 'Pasien',
-          value: 'pasien_id',
-          sortable: false
+          text: 'Ras',
+          value: 'ras_nama',
+          sortable: false,
+          align: 'left'
         },
         {
-          text: 'Pemilik',
-          value: 'pemilik_id',
-          sortable: false
+          text: 'Sex',
+          value: 'pasien_format_jk',
+          sortable: false,
+          align: 'left'
+        },
+        {
+          text: 'Umur',
+          value: 'pasien_format_jk',
+          sortable: false,
+          align: 'left'
+        },
+        {
+          text: 'Berat (Kg)',
+          value: 'berat',
+          sortable: false,
+          align: 'left'
         },
         {
           text: 'Aksi',
@@ -117,7 +142,8 @@ export default {
         }
       ],
       service: Service.RekamMedik,
-      dialogIsVisible: false
+      delConfirmIsVisible: false,
+      delId: null
     }
   },
   methods: {
@@ -127,11 +153,25 @@ export default {
     formatTanggal (s) {
       return moment(s).fromNow()
     },
+    formatUmur (s) {
+      return moment(s).fromNow(true)
+    },
     openPerawatan (id) {
       this.$router.push('/app/perawatan/rm/' + id)
     },
     openResep (id) {
       this.$router.push('/app/resep/rm/' + id)
+    },
+    async delItem (id) {
+      let result = await Service.RekamMedik.remove(id)
+      console.log(result)
+      this.delConfirmIsVisible = false
+      this.$router.go()
+    },
+    openDelConfirm (id) {
+      console.log(id)
+      this.delId = id
+      this.delConfirmIsVisible = true
     }
   }
 }

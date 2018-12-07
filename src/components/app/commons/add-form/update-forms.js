@@ -3,6 +3,8 @@ import UpdateFormBase from './UpdateFormBase'
 import Service from '@/services'
 import Vue from 'vue'
 
+const pasienEditStructure = pasien.filter(it => it.field !== 'tipe_norek' && it.field !== 'norek')
+
 const items = [
   {
     name: 'Ras',
@@ -36,7 +38,7 @@ const items = [
     name: 'Pasien',
     icon: 'heartbeat',
     service: Service.Pasien,
-    structures: pasien,
+    structures: pasienEditStructure,
     path: 'pasien/update/:id'
   },
   {

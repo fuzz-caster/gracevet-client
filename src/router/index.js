@@ -30,7 +30,7 @@ import RmPerawatanList from '@/components/app/rekam-medik/PerawatanList'
 import Tipe1 from '@/components/app/rekam-medik/tambah/Tipe1'
 import Tipe2 from '@/components/app/rekam-medik/tambah/Tipe2'
 import Tipe3 from '@/components/app/rekam-medik/tambah/Tipe3'
-import Tipe4 from '@/components/app/rekam-medik/tambah/Tipe4'
+import Tipe5 from '@/components/app/rekam-medik/tambah/Tipe5'
 
 Vue.use(Router)
 
@@ -97,7 +97,7 @@ export default new Router({
         },
         {
           path: 'rekammedik/tambah/PemilikLamaPasienLama',
-          component: Tipe4
+          component: Tipe5
         },
         {
           path: 'rekammedik/update/penkhusus/:id',

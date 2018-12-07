@@ -21,7 +21,7 @@ function kunjTerakhirFormatter (t) {
 
 function tanggalFormatter (t) {
   let x = moment(t.tanggal)
-  let z = x.format('MMMM D YYYY, h:mm a')
+  let z = x.format('DD-MM-YYYY, hh:mm a')
   let y = x.fromNow()
   let result = Object.assign({}, t, {
     tanggal: z,

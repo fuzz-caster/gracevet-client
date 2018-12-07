@@ -7,19 +7,10 @@
       <v-spacer/>
       <v-toolbar-items>
         <v-btn
-          flat>
-          <span class="mr-2">Edit</span>
-          <font-awesome-icon icon="download" size="lg"></font-awesome-icon>
-        </v-btn>
-        <v-btn
+          @click="openPrintPreview"
           flat>
           <span class="mr-2">Print</span>
           <font-awesome-icon icon="download" size="lg"></font-awesome-icon>
-        </v-btn>
-        <v-btn
-          flat>
-          <span class="mr-2">Hapus</span>
-          <font-awesome-icon icon="trash" size="lg"></font-awesome-icon>
         </v-btn>
       </v-toolbar-items>
     </v-toolbar>
@@ -270,6 +261,9 @@ export default {
           console.log('Error getting pemilik')
           console.log(err)
         })
+    },
+    openPrintPreview () {
+      window.open('http://localhost/app/extra/generateKunjunganReport.php?id_kunjungan=' + this.id, '_blank')
     }
   },
   mounted () {

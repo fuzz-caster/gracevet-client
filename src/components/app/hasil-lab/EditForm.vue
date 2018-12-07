@@ -22,7 +22,7 @@
                   <v-select :items="typeOptions" label="Tipe" v-model="st.type" />
                 </v-card-text>
                 <v-card-actions>
-                  <v-btn flat small color="red">Hapus</v-btn>
+                  <v-btn @click="delItem(index)" flat small color="red">Hapus</v-btn>
                 </v-card-actions>
               </v-card>
             </v-card-text>
@@ -115,6 +115,9 @@ export default {
           this.state = 'error'
           throw err
         })
+    },
+    delItem (index) {
+      this.item.struktur.splice(index, 1)
     }
   },
   mounted () {

@@ -22,7 +22,7 @@
                   <v-btn color="indigo" icon @click="update">
                     <font-awesome-icon icon="download" color="white"></font-awesome-icon>
                   </v-btn>
-                  <v-btn color="red" icon>
+                  <v-btn color="red" icon @click="$router.back()">
                     <font-awesome-icon icon="times" color="white"></font-awesome-icon>
                   </v-btn>
                 </v-toolbar-items>
