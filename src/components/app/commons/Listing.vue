@@ -61,6 +61,7 @@
             @paging-goto="onPagingChange($event)"
           />
           <v-btn
+            v-if="showAdd"
             icon
             flat
             @click="onAddButtonClicked"
@@ -121,7 +122,11 @@ export default {
     headers: String,
     service: Object,
     routePath: String,
-    addHandler: Function
+    addHandler: Function,
+    showAdd: {
+      type: Boolean,
+      default: true
+    }
   },
   components: {
     Paging,

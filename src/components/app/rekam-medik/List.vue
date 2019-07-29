@@ -25,10 +25,18 @@
           <div class="body-1">{{ rprops.rprops.item.pasien_format_jk }}</div>
         </td>
         <td>
+          <div class="body-1">{{ rprops.rprops.item.pasien_tc }}</div>
+        </td>
+        <td>
           <div class="body-1">{{ formatUmur(rprops.rprops.item.pasien_lahir) }}</div>
         </td>
         <td class="text-md-left">
           <div class="body-1">{{ rprops.rprops.item.berat }}</div>
+        </td>
+        <td class="text-md-left">
+          <div class="body-1">
+            <a v-on:click.stop="$router.push('/app/pemilik/update/' + rprops.rprops.item.pemilik_id) ">{{ rprops.rprops.item.pemilik_nama }}</a>
+          </div>
         </td>
       </template>
       <template slot="action-content" slot-scope="rprops">
@@ -123,6 +131,12 @@ export default {
           align: 'left'
         },
         {
+          text: 'Tatto/Chip',
+          value: 'pasien_tc',
+          sortable: false,
+          align: 'left'
+        },
+        {
           text: 'Umur',
           value: 'pasien_format_jk',
           sortable: false,
@@ -135,9 +149,13 @@ export default {
           align: 'left'
         },
         {
+          text: 'Pemilik',
+          value: 'pemilik_nama',
+          sortable: false,
+          align: 'left'
+        },
+        {
           text: 'Aksi',
-          width: '300',
-          align: 'right',
           sortable: false
         }
       ],

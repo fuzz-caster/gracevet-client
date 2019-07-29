@@ -96,14 +96,19 @@ export const pasien = [
     type: 'select',
     options: [
       {
-        value: 0,
+        value: '0',
         text: 'Betina'
       },
       {
-        value: 1,
+        value: '1',
         text: 'Jantan'
       }
     ]
+  },
+  {
+    name: 'Tatto/Chip',
+    field: 'tatto_chip',
+    value: ''
   },
   {
     name: 'Signalemen',

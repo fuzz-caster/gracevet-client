@@ -38,6 +38,11 @@
         :items="optionsJenisKelamin">
       </v-select>
       <v-text-field
+        label="Tatto/Chip"
+        v-model="item.tatto_chip"
+      >
+      </v-text-field>
+      <v-text-field
         label="Signalemen"
         v-model="item.signalemen"
       >
@@ -69,7 +74,8 @@ export default {
         signalemen: '',
         jk: 0,
         lahir: null,
-        id_ras: null
+        id_ras: null,
+        tatto_chip: ''
       },
       optionsJenisKelamin: [
         {

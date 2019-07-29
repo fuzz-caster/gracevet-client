@@ -226,7 +226,7 @@ export default {
         })
         .then(() => Services.RekamMedik.getById(this.id))
         .then(data => {
-          let dateTime = moment(data.tanggal, 'MMMM D YYYY, h:mm a')
+          let dateTime = moment(data.tanggal, 'DD-MM-YYYY, h:mm a')
           let tanggal = dateTime.format('YYYY-MM-DD')
           let waktu = dateTime.format('HH:mm')
 

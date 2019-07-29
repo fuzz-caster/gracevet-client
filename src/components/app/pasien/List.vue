@@ -5,6 +5,7 @@
     :headers="headers"
     :service="service"
     :route-path="routePath"
+    :show-add="false"
   >
     <template slot="row-content" slot-scope="rprops">
       <td>
@@ -30,6 +31,9 @@
       </td>
       <td>
         <div class="caption">{{ rprops.rprops.item.ras_nama }}</div>
+      </td>
+      <td>
+        <div class="caption">{{ rprops.rprops.item.tatto_chip }}</div>
       </td>
       <td>
         <div class="caption">{{ rprops.rprops.item.jh_nama }}</div>
@@ -70,6 +74,11 @@ export default {
         {
           text: 'Ras',
           value: 'ras_nama',
+          width: '120'
+        },
+        {
+          text: 'Tatto/Chip',
+          value: '',
           width: '120'
         },
         {

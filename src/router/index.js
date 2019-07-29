@@ -31,6 +31,7 @@ import Tipe1 from '@/components/app/rekam-medik/tambah/Tipe1'
 import Tipe2 from '@/components/app/rekam-medik/tambah/Tipe2'
 import Tipe3 from '@/components/app/rekam-medik/tambah/Tipe3'
 import Tipe5 from '@/components/app/rekam-medik/tambah/Tipe5'
+import ListWithHandsonTable from '@/components/app/rekam-medik/ListWithHandsOnTable'
 
 Vue.use(Router)
 
@@ -61,6 +62,11 @@ export default new Router({
           path: 'rekammedik/list',
           name: 'RekamMedikList',
           component: RekamMedikList
+        },
+        {
+          path: 'rekammedik/list2',
+          name: 'RekamMedikList2',
+          component: ListWithHandsonTable
         },
         {
           path: 'rekammedik/detail/:id',

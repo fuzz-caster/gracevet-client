@@ -5,6 +5,7 @@
     :headers="headers"
     :service="service"
     :route-path="routePath"
+    :show-add="false"
   >
     <template slot="row-content" slot-scope="rprops">
       <td>
